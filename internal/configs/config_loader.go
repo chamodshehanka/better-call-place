@@ -22,7 +22,7 @@ func init() {
 	loadEnvFileIfAvailable()
 
 	if err := ensureRequiredEnvsAreAvailable(); err != nil {
-		log.Err(err).Msgf("Error loading environment variables: %v", err)
+		log.Fatal().Msgf("Error loading environment variables: %v", err)
 	}
 
 	config = Config{
