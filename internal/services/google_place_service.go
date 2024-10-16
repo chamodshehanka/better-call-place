@@ -8,7 +8,26 @@ import (
 	"net/http"
 )
 
-const googlePlacesAPI = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
+const googlePlacesAPI = "https://places.googleapis.com/v1/places:autocomplete"
+
+type Location struct {
+	Latitude  float64 `json:"latitude"`
+	Longitude float64 `json:"longitude"`
+}
+
+type Circle struct {
+	Center Location `json:"center"`
+	Radius float64  `json:"radius"`
+}
+
+type LocationBias struct {
+	Circle Circle `json:"circle"`
+}
+
+type SuggestionRequest struct {
+	Input        string       `json:"input"`
+	LocationBias LocationBias `json:"locationBias"`
+}
 
 type PlaceSuggestion struct {
 	Description string `json:"description"`
