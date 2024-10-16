@@ -8,8 +8,6 @@ import (
 	"net/http"
 )
 
-const googlePlacesAPI = "https://places.googleapis.com/v1/places:autocomplete"
-
 type Location struct {
 	Latitude  float64 `json:"latitude"`
 	Longitude float64 `json:"longitude"`
@@ -37,9 +35,9 @@ type PlacesResponse struct {
 	Predictions []PlaceSuggestion `json:"predictions"`
 }
 
-func FetchPlaceSuggestions(query string) ([]PlaceSuggestion, error) {
+func FetchPlaceSuggestions(apiURL, query string) ([]PlaceSuggestion, error) {
 	apiKey := configs.GetConfig().GooglePlaceAPIKey
-	url := fmt.Sprintf("%s?input=%s&key=%s", googlePlacesAPI, query, apiKey)
+	url := fmt.Sprintf("%s?input=%s&key=%s", apiURL, query, apiKey)
 
 	resp, err := http.Get(url)
 	if err != nil {

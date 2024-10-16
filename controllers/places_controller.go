@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"github.com/chamodshehanka/better-call-place/internal/constants"
 	"github.com/chamodshehanka/better-call-place/internal/services"
 	"github.com/rs/zerolog/log"
 	"net/http"
@@ -14,7 +15,7 @@ func PlaceSuggestionsHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	suggestions, err := services.FetchPlaceSuggestions(query)
+	suggestions, err := services.FetchPlaceSuggestions(constants.GooglePlacesAPI, query)
 	if err != nil {
 		log.Err(err).Msg("Error fetching place suggestions")
 		http.Error(w, err.Error(), http.StatusInternalServerError)
