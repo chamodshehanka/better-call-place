@@ -75,3 +75,6 @@ Configuration is managed using environment variables. The `configs` package load
 PORT=8080
 GOOGLE_PLACE_API_KEY=your_api_key_here
 ```
+
+### References
+[API Docs](https://developers.google.com/maps/documentation/places/web-service/text-search?apix_params=%7B%22fields%22%3A%22*%22%2C%22resource%22%3A%7B%22textQuery%22%3A%22Seeds%20Cafe%20Colombo%22%7D%7D#try-it)
